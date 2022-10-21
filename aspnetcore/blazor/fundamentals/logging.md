@@ -541,11 +541,11 @@ Add the namespace for <xref:Microsoft.Extensions.Logging?displayProperty=fullNam
 @inject ILoggerProvider LoggerProvider
 ```
 
-In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType>:
+In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType> (`Navigation` is an injected <xref:Microsoft.AspNetCore.Components.NavigationManager>):
 
 ```csharp
 var connection = new HubConnectionBuilder()
-    .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+    .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
     .ConfigureLogging(logging => logging.AddProvider(LoggerProvider))
     .Build();
 ```
@@ -871,11 +871,11 @@ Add the namespace for <xref:Microsoft.Extensions.Logging?displayProperty=fullNam
 @inject ILoggerProvider LoggerProvider
 ```
 
-In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType>:
+In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType> (`Navigation` is an injected <xref:Microsoft.AspNetCore.Components.NavigationManager>):
 
 ```csharp
 var connection = new HubConnectionBuilder()
-    .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+    .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
     .ConfigureLogging(logging => logging.AddProvider(LoggerProvider))
     .Build();
 ```
@@ -1196,11 +1196,11 @@ Add the namespace for <xref:Microsoft.Extensions.Logging?displayProperty=fullNam
 @inject ILoggerProvider LoggerProvider
 ```
 
-In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType>:
+In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType> (`Navigation` is an injected <xref:Microsoft.AspNetCore.Components.NavigationManager>):
 
 ```csharp
 var connection = new HubConnectionBuilder()
-    .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+    .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
     .ConfigureLogging(logging => logging.AddProvider(LoggerProvider))
     .Build();
 ```
@@ -1672,7 +1672,7 @@ builder.Logging.AddConfiguration(
 
 The call to <xref:Microsoft.Extensions.Logging.Configuration.LoggingBuilderConfigurationExtensions.AddConfiguration%2A?displayProperty=nameWithType> can be placed either before or after adding the custom logger provider.
 
-Run the app again. Select the the **`Log Messages`** button. Notice that the logging configuration is applied from the `appsettings.json` file. All three log entries are in the long (`LogFormat.Long`) format:
+Run the app again. Select the **`Log Messages`** button. Notice that the logging configuration is applied from the `appsettings.json` file. All three log entries are in the long (`LogFormat.Long`) format:
 
 > :::no-loc text="[ 3: Information ] LoggingTest.Pages.Index - This is an information message.":::  
 > :::no-loc text="[ 5: Warning     ] LoggingTest.Pages.Index - This is a warning message.":::  
@@ -1736,14 +1736,50 @@ Add the namespace for <xref:Microsoft.Extensions.Logging?displayProperty=fullNam
 @inject ILoggerProvider LoggerProvider
 ```
 
-In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType>:
+In the component's [`OnInitializedAsync` method](xref:blazor/components/lifecycle#component-initialization-oninitializedasync), use <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilderExtensions.ConfigureLogging%2A?displayProperty=nameWithType> (`Navigation` is an injected <xref:Microsoft.AspNetCore.Components.NavigationManager>):
 
 ```csharp
 var connection = new HubConnectionBuilder()
-    .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+    .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
     .ConfigureLogging(logging => logging.AddProvider(LoggerProvider))
     .Build();
 ```
+
+## Blazor WebAssembly authentication logging
+
+*This section only applies to Blazor WebAssembly apps.*
+
+Log Blazor authentication messages at the <xref:Microsoft.Extensions.Logging.LogLevel.Debug?displayProperty=nameWithType> or <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> logging levels with a logging configuration in app settings or by using a log filter for <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication?displayProperty=fullName> in `Program.cs`.
+
+Use ***either*** of the following approaches:
+
+* In an app settings file (for example, `wwwroot/appsettings.Development.json`):
+
+  ```json
+  "Logging": {
+    "LogLevel": {
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication": "Debug"
+    }
+  }
+  ```
+
+  For more information on how to enable a Blazor WebAssembly app to read app settings files, see <xref:blazor/fundamentals/configuration#logging-configuration>.
+
+* Using a log filter, the following example:
+
+  * Activates logging for the `Debug` build configuration using a [C# preprocessor directive](/dotnet/csharp/language-reference/preprocessor-directives).
+  * Logs Blazor authentication messages at the <xref:Microsoft.Extensions.Logging.LogLevel.Debug> log level.
+
+  ```csharp
+  #if DEBUG
+      builder.Logging.AddFilter(
+          "Microsoft.AspNetCore.Components.WebAssembly.Authentication", 
+          LogLevel.Debug);
+  #endif
+  ```
+
+> [!NOTE]
+> Blazor WebAssembly apps only log to the client-side [browser developer tools](https://developer.mozilla.org/docs/Glossary/Developer_Tools) console.
 
 ## Additional resources
 

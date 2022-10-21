@@ -1,5 +1,9 @@
 ## Troubleshoot
 
+### Logging
+
+To enable debug or trace logging for Blazor WebAssembly authentication, see <xref:blazor/fundamentals/logging#blazor-webassembly-authentication-logging>.
+
 ### Common errors
 
 * Misconfiguration of the app or Identity Provider (IP)
@@ -93,7 +97,7 @@ A functioning app may fail immediately after upgrading either the .NET Core SDK 
 
 ### Run the Server app
 
-When testing and troubleshooting a hosted Blazor WebAssembly [solution](xref:blazor/tooling#visual-studio-solution-file-sln), make sure that you're running the app from the **`Server`** project. For example in Visual Studio, confirm that the Server project is highlighted in **Solution Explorer** before you start the app with any of the following approaches:
+When testing and troubleshooting a hosted Blazor WebAssembly [solution](xref:blazor/tooling#visual-studio-solution-file-sln), make sure that you're running the app from the **:::no-loc text="Server":::** project. For example in Visual Studio, confirm that the Server project is highlighted in **Solution Explorer** before you start the app with any of the following approaches:
 
 * Select the **Run** button.
 * Use **Debug** > **Start Debugging** from the menu.

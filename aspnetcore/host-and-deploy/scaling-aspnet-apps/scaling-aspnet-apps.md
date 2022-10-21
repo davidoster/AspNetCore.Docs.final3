@@ -115,7 +115,7 @@ It's not immediately apparent why the search requests are failing. The browser t
 
 1. In the query editor, compose a basic query to search the **ContainerAppConsoleLogs_CL Logs** table for recent exceptions, such as the following script:
 
-    ```sql
+    ```KQL
     ContainerAppConsoleLogs_CL
     | where Log_s contains "exception"
     | sort by TimeGenerated desc
@@ -257,8 +257,9 @@ The preceding changes allow the app to manage data protection using a centralize
 
 Update the placeholders in `AzureURIs` section of the `appsettings.json` file to include the following:
 
-1. Replace the `<storage-account-name>` placeholder with the name of the `scalablerazorstorageXXXX` account created.
-1. Replace the `<key-vault-name>` placeholder with the name of the `scalablerazorvaultXXXX` key vault created.
+1. Replace the `<storage-account-name>` placeholder with the name of the `scalablerazorstorageXXXX` storage account.
+1. Replace the `<container-name>` placeholder with the name of the `scalablerazorkeys` storage container.
+1. Replace the `<key-vault-name>` placeholder with the name of the `scalablerazorvaultXXXX` key vault.
 1. Replace the `<key-name>` placeholder in the key vault URI with the `razorkey` name created previously.
 
     :::code language="csharp" source="~/../AspNetCore.Docs.Samples/tutorials/scalable-razor-apps/end/appsettings.json" highlight="9-12":::

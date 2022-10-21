@@ -40,7 +40,7 @@ The following example starts Blazor when the document is ready:
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Chain to the `Promise` that results from a manual start
 
@@ -59,7 +59,7 @@ To perform additional tasks, such as JS interop initialization, use [`then`](htt
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Load boot resources
 
@@ -84,7 +84,7 @@ Customize how these boot resources are loaded using the `loadBootResource` API. 
 
 | Parameter    | Description |
 | ------------ | ----------- |
-| `type`       | The type of the resource. Permissable types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
+| `type`       | The type of the resource. Permissible types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
 | `name`       | The name of the resource. |
 | `defaultUri` | The relative or absolute URI of the resource. |
 | `integrity`  | The integrity string representing the expected content in the response. |
@@ -160,7 +160,7 @@ In the following examples, a [Content Security Policy (CSP)](https://developer.m
 
 * In hosted Blazor WebAssembly apps that aren't prerendered, pass <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> to <xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A> that specifies response headers at the <xref:Microsoft.AspNetCore.Builder.StaticFileOptions.OnPrepareResponse> stage.
 
-  In `Program.cs` of the **`Server`** project:
+  In `Program.cs` of the **:::no-loc text="Server":::** project:
 
   ```csharp
   var staticFileOptions = new StaticFileOptions
@@ -183,7 +183,7 @@ For more information on CSPs, see <xref:blazor/security/content-security-policy>
 
 * [Environments: Set the app's environment](xref:blazor/fundamentals/environments)
 * SignalR
-  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup-blazor-server)
+  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup)
   * [Configure SignalR client logging](xref:blazor/fundamentals/signalr#configure-signalr-client-logging-blazor-server)
   * [Modify the reconnection handler](xref:blazor/fundamentals/signalr#modify-the-reconnection-handler-blazor-server)
   * [Adjust the reconnection retry count and interval](xref:blazor/fundamentals/signalr#adjust-the-reconnection-retry-count-and-interval-blazor-server)
@@ -191,6 +191,12 @@ For more information on CSPs, see <xref:blazor/security/content-security-policy>
 * [Globalization and localization: Statically set the culture with `Blazor.start` (*Blazor WebAssembly only*)](xref:blazor/globalization-localization?pivots=webassembly#statically-set-the-culture)
 * [JS interop: Inject a script after Blazor starts](xref:blazor/js-interop/index#inject-a-script-after-blazor-starts)
 * [Host and deploy: Blazor WebAssembly: Compression](xref:blazor/host-and-deploy/webassembly#compression)
+
+<!-- HOLD: WORKING ON https://github.com/dotnet/AspNetCore.Docs/issues/27320
+
+* [Configure SignalR server timeout and keep alive on the client](xref:blazor/fundamentals/signalr#configure-signalr-server-timeout-and-keep-alive-on-the-client)
+
+-->
 
 :::moniker-end
 
@@ -218,7 +224,7 @@ The following example starts Blazor when the document is ready:
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Chain to the `Promise` that results from a manual start
 
@@ -237,7 +243,7 @@ To perform additional tasks, such as JS interop initialization, use [`then`](htt
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Load boot resources
 
@@ -262,7 +268,7 @@ Customize how these boot resources are loaded using the `loadBootResource` API. 
 
 | Parameter    | Description |
 | ------------ | ----------- |
-| `type`       | The type of the resource. Permissable types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
+| `type`       | The type of the resource. Permissible types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
 | `name`       | The name of the resource. |
 | `defaultUri` | The relative or absolute URI of the resource. |
 | `integrity`  | The integrity string representing the expected content in the response. |
@@ -338,7 +344,7 @@ In the following examples, a [Content Security Policy (CSP)](https://developer.m
 
 * In hosted Blazor WebAssembly apps that aren't prerendered, pass <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> to <xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A> that specifies response headers at the <xref:Microsoft.AspNetCore.Builder.StaticFileOptions.OnPrepareResponse> stage.
 
-  In `Startup.Configure` (`Startup.cs`) of the **`Server`** project:
+  In `Startup.Configure` (`Startup.cs`) of the **:::no-loc text="Server":::** project:
 
   ```csharp
   var staticFileOptions = new StaticFileOptions
@@ -361,7 +367,7 @@ For more information on CSPs, see <xref:blazor/security/content-security-policy>
 
 * [Environments: Set the app's environment](xref:blazor/fundamentals/environments)
 * SignalR
-  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup-blazor-server)
+  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup)
   * [Configure SignalR client logging](xref:blazor/fundamentals/signalr#configure-signalr-client-logging-blazor-server)
   * [Modify the reconnection handler](xref:blazor/fundamentals/signalr#modify-the-reconnection-handler-blazor-server)
   * [Adjust the reconnection retry count and interval](xref:blazor/fundamentals/signalr#adjust-the-reconnection-retry-count-and-interval-blazor-server)
@@ -369,6 +375,12 @@ For more information on CSPs, see <xref:blazor/security/content-security-policy>
 * [Globalization and localization: Statically set the culture with `Blazor.start` (*Blazor WebAssembly only*)](xref:blazor/globalization-localization?pivots=webassembly#statically-set-the-culture)
 * [JS interop: Inject a script after Blazor starts](xref:blazor/js-interop/index#inject-a-script-after-blazor-starts)
 * [Host and deploy: Blazor WebAssembly: Compression](xref:blazor/host-and-deploy/webassembly#compression)
+
+<!-- HOLD: WORKING ON https://github.com/dotnet/AspNetCore.Docs/issues/27320
+
+* [Configure SignalR server timeout and keep alive on the client](xref:blazor/fundamentals/signalr#configure-signalr-server-timeout-and-keep-alive-on-the-client)
+
+-->
 
 :::moniker-end
 
@@ -396,7 +408,7 @@ The following example starts Blazor when the document is ready:
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Chain to the `Promise` that results from a manual start
 
@@ -415,7 +427,7 @@ To perform additional tasks, such as JS interop initialization, use [`then`](htt
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Load boot resources
 
@@ -440,7 +452,7 @@ Customize how these boot resources are loaded using the `loadBootResource` API. 
 
 | Parameter    | Description |
 | ------------ | ----------- |
-| `type`       | The type of the resource. Permissable types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
+| `type`       | The type of the resource. Permissible types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
 | `name`       | The name of the resource. |
 | `defaultUri` | The relative or absolute URI of the resource. |
 | `integrity`  | The integrity string representing the expected content in the response. |
@@ -516,7 +528,7 @@ In the following examples, a [Content Security Policy (CSP)](https://developer.m
 
 * In hosted Blazor WebAssembly apps, pass <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> to <xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A> that specifies response headers at the <xref:Microsoft.AspNetCore.Builder.StaticFileOptions.OnPrepareResponse> stage.
 
-  In `Startup.Configure` (`Startup.cs`) of the **`Server`** project:
+  In `Startup.Configure` (`Startup.cs`) of the **:::no-loc text="Server":::** project:
 
   ```csharp
   var staticFileOptions = new StaticFileOptions
@@ -538,12 +550,18 @@ For more information on CSPs, see <xref:blazor/security/content-security-policy>
 ## Additional resources
 
 * SignalR
-  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup-blazor-server)
+  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup)
   * [Configure SignalR client logging](xref:blazor/fundamentals/signalr#configure-signalr-client-logging-blazor-server)
   * [Modify the reconnection handler](xref:blazor/fundamentals/signalr#modify-the-reconnection-handler-blazor-server)
   * [Adjust the reconnection retry count and interval](xref:blazor/fundamentals/signalr#adjust-the-reconnection-retry-count-and-interval-blazor-server)
 * [JS interop: Inject a script after Blazor starts](xref:blazor/js-interop/index#inject-a-script-after-blazor-starts)
 * [Host and deploy: Blazor WebAssembly: Compression](xref:blazor/host-and-deploy/webassembly#compression)
+
+<!-- HOLD: WORKING ON https://github.com/dotnet/AspNetCore.Docs/issues/27320
+
+* [Configure SignalR server timeout and keep alive on the client](xref:blazor/fundamentals/signalr#configure-signalr-server-timeout-and-keep-alive-on-the-client)
+
+-->
 
 :::moniker-end
 
@@ -575,7 +593,7 @@ The following example starts Blazor when the document is ready:
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Chain to the `Promise` that results from a manual start
 
@@ -594,7 +612,7 @@ To perform additional tasks, such as JS interop initialization, use [`then`](htt
 </body>
 ```
 
-The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or `server` for a Blazor Server app (`blazor.server.js`).
+The `{webassembly|server}` placeholder in the preceding markup is either `webassembly` for a Blazor WebAssembly app (`blazor.webassembly.js`) or :::no-loc text="Server"::: for a Blazor Server app (`blazor.server.js`).
 
 ## Load boot resources
 
@@ -619,7 +637,7 @@ Customize how these boot resources are loaded using the `loadBootResource` API. 
 
 | Parameter    | Description |
 | ------------ | ----------- |
-| `type`       | The type of the resource. Permissable types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
+| `type`       | The type of the resource. Permissible types include: `assembly`, `pdb`, `dotnetjs`, `dotnetwasm`, and `timezonedata`. You only need to specify types for custom behaviors. Types not specified to `loadBootResource` are loaded by the framework per their default loading behaviors. |
 | `name`       | The name of the resource. |
 | `defaultUri` | The relative or absolute URI of the resource. |
 | `integrity`  | The integrity string representing the expected content in the response. |
@@ -695,7 +713,7 @@ In the following examples, a [Content Security Policy (CSP)](https://developer.m
 
 * In hosted Blazor WebAssembly apps that aren't prerendered, pass <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> to <xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A> that specifies response headers at the <xref:Microsoft.AspNetCore.Builder.StaticFileOptions.OnPrepareResponse> stage.
 
-  In `Program.cs` of the **`Server`** project:
+  In `Program.cs` of the **:::no-loc text="Server":::** project:
 
   ```csharp
   var staticFileOptions = new StaticFileOptions
@@ -761,7 +779,7 @@ To review the Blazor WebAssembly project template markup and styling for the def
 
 * [Environments: Set the app's environment](xref:blazor/fundamentals/environments)
 * SignalR
-  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup-blazor-server)
+  * [Blazor startup](xref:blazor/fundamentals/signalr#blazor-startup)
   * [Configure SignalR client logging](xref:blazor/fundamentals/signalr#configure-signalr-client-logging-blazor-server)
   * [Modify the reconnection handler](xref:blazor/fundamentals/signalr#modify-the-reconnection-handler-blazor-server)
   * [Adjust the reconnection retry count and interval](xref:blazor/fundamentals/signalr#adjust-the-reconnection-retry-count-and-interval-blazor-server)
@@ -769,5 +787,11 @@ To review the Blazor WebAssembly project template markup and styling for the def
 * [Globalization and localization: Statically set the culture with `Blazor.start` (*Blazor WebAssembly only*)](xref:blazor/globalization-localization?pivots=webassembly#statically-set-the-culture)
 * [JS interop: Inject a script after Blazor starts](xref:blazor/js-interop/index#inject-a-script-after-blazor-starts)
 * [Host and deploy: Blazor WebAssembly: Compression](xref:blazor/host-and-deploy/webassembly#compression)
+
+<!-- HOLD: WORKING ON https://github.com/dotnet/AspNetCore.Docs/issues/27320
+
+* [Configure SignalR server timeout and keep alive on the client](xref:blazor/fundamentals/signalr#configure-signalr-server-timeout-and-keep-alive-on-the-client)
+
+-->
 
 :::moniker-end
