@@ -1,4 +1,4 @@
-﻿using ContactManager.Authorization;
+using ContactManager.Authorization;
 using ContactManager.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +31,7 @@ namespace ContactManager.Data
                 await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
 
                 SeedDB(context, adminID);
+                //SeedDB(context, managerID);
             }
         }
 
@@ -90,10 +91,10 @@ namespace ContactManager.Data
         #region snippet1
         public static void SeedDB(ApplicationDbContext context, string adminID)
         {
-            if (context.Contact.Any())
-            {
-                return;   // DB has been seeded
-            }
+            //if (context.Contact.Any())
+            //{
+            //    return;   // DB has been seeded
+            //}
 
             context.Contact.AddRange(
             #region snippet_Contact

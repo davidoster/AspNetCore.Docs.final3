@@ -28,9 +28,17 @@ namespace ContosoUniversity
         #region snippet_SchoolContext
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.Configure<CookiePolicyOptions>(options =>
+            // {
+            //     options.CheckConsentNeeded = context => true;
+            //     options.MinimumSameSitePolicy = SameSiteMode.None;
+            // });
             services.Configure<CookiePolicyOptions>(options =>
             {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -38,6 +46,7 @@ namespace ContosoUniversity
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
+            // services.AddRazorPages();
         }
         #endregion
 

@@ -31,6 +31,7 @@ namespace ContactManager
                     // dotnet user-secrets set SeedUserPW <pw>
 
                     var testUserPw = config["SeedUserPW"];
+                    //testUserPw = "SuperSecretPassw0rD!";
 
                     SeedData.Initialize(services, testUserPw).Wait();
                 }

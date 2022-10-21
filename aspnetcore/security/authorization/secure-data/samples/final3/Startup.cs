@@ -1,5 +1,6 @@
 using ContactManager.Authorization;
 using ContactManager.Data;
+using ContactManager.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +34,7 @@ namespace ContactManager
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             #endregion
-
+            //services.AddMvc();
             services.AddRazorPages();
 
             services.AddAuthorization(options =>
@@ -53,6 +54,9 @@ namespace ContactManager
 
             services.AddSingleton<IAuthorizationHandler,
                                   ContactManagerAuthorizationHandler>();
+
+            // My Custom Services
+            services.AddScoped<IUserIdentityService, UserIdentityService>();
         }
         #endregion
 
@@ -81,6 +85,7 @@ namespace ContactManager
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

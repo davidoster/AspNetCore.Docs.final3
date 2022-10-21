@@ -1,6 +1,7 @@
 using ContactManager.Authorization;
 using ContactManager.Data;
 using ContactManager.Models;
+using ContactManager.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +13,18 @@ namespace ContactManager.Pages.Contacts
     #region snippet
     public class DetailsModel : DI_BasePageModel
     {
+        IUserIdentityService _userIdentityService;
+        UserManager<IdentityUser> _userManager;
+
         public DetailsModel(
             ApplicationDbContext context,
             IAuthorizationService authorizationService,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IUserIdentityService userIdentity)
             : base(context, authorizationService, userManager)
         {
+            _userManager = userManager;
+            _userIdentityService = userIdentity;
         }
 
         public Contact Contact { get; set; }
@@ -69,6 +76,11 @@ namespace ContactManager.Pages.Contacts
             contact.Status = status;
             Context.Contact.Update(contact);
             await Context.SaveChangesAsync();
+
+            // SaveAsAnIdentityUser
+            if (status == ContactStatus.Approved) { 
+                await _userIdentityService.SaveAsUserIdentity(_userManager, contact.Email, "SuperSecretPassw0rD!");
+            }
 
             return RedirectToPage("./Index");
         }
